@@ -1,6 +1,15 @@
 import "../css/main.css";
 import { data } from '../data/data.json';
 
+mapboxgl.accessToken = 'pk.eyJ1IjoiYmhpc29uIiwiYSI6ImNqcDc5a2xlaTEwNmwza28zMDFvYWl1YnkifQ.9KB2DoGG7y7QBd93uBbWFw';
+
+var map = window.map = new mapboxgl.Map({
+  container: 'map',
+  zoom: 12,
+  center: [-3.5485669, 50.724423],
+  style: 'mapbox://styles/bhison/cjzx4fu180ehk1crs3kl0eis1',
+});
+
 /*
 const data =
   response.data.map(d => {

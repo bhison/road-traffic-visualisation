@@ -14,7 +14,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tim Bhison",
-  "dependencies": {},
+  "dependencies": {
+    "mapbox-gl": "^1.3.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",

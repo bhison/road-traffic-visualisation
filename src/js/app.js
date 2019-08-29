@@ -1,3 +1,5 @@
+//Reference: https://docs.mapbox.com/help/tutorials/mapbox-gl-js-expressions/
+
 import "../css/main.css";
 import * as sampleData from '../data/data.json';
 
@@ -17,14 +19,30 @@ map.on('load', function () {
       'data': processedData
     });
 
+    let maxTraffic = processedData.features[0].properties.allMotorVehicles;
+    processedData.features.forEach(e => {
+      if (e.properties.allMotorVehicles > maxTraffic) {
+        maxTraffic = e.properties.allMotorVehicles;
+      }
+    });
+    console.log("Max Traffic:" + maxTraffic);
+
     map.addLayer({
       "id": "points",
       "type": "circle",
-      "source": 'traffic-data'
+      "source": 'traffic-data',
+      paint: {
+        // 'circle-radius': ["/", ['number', ['get', 'allMotorVehicles'], maxTraffic], maxTraffic],
+        'circle-radius': [
+          '/',
+          ['number', ['get', 'allMotorVehicles'], 1],
+          8000
+        ],
+        'circle-opacity': 0.8,
+        'circle-color': 'rgb(171, 72, 33)'
+      }
     });
   });
-
-
 });
 
 //Convert data to GeoJSON
@@ -46,15 +64,13 @@ function GenerateDataSource(callback) {
           "roadName": element.road_name,
           "startJunction": element.start_junction_road_name,
           "endJunction": element.end_junction_road_name,
-          "counts": {
-            "pushbikes": Number(element.pedal_cycles),
-            "motorbikes": Number(element.two_wheeled_motor_vehicles),
-            "cars": Number(element.cars_and_taxis),
-            "buses": Number(element.buses_and_coaches),
-            "lgvs": Number(element.lgvs),
-            "hgvs": Number(element.all_hgvs),
-            "allMotorVehicles": Number(element.all_motor_vehicles)
-          }
+          "pushbikes": Number(element.pedal_cycles),
+          "motorbikes": Number(element.two_wheeled_motor_vehicles),
+          "cars": Number(element.cars_and_taxis),
+          "buses": Number(element.buses_and_coaches),
+          "lgvs": Number(element.lgvs),
+          "hgvs": Number(element.all_hgvs),
+          "allMotorVehicles": Number(element.all_motor_vehicles)
         },
         "geometry": {
           "type": "Point",
@@ -67,13 +83,13 @@ function GenerateDataSource(callback) {
     } else {
       //consolidate the counts from the all directions
       const match = existingObjectsWithCountPointId[0];
-      match.properties.counts.pushbikes += Number(element.pedal_cycles);
-      match.properties.counts.motorbikes += Number(element.two_wheeled_motor_vehicles);
-      match.properties.counts.cars += Number(element.cars_and_taxis);
-      match.properties.counts.buses += Number(element.buses_and_coaches);
-      match.properties.counts.lgvs += Number(element.lgvs);
-      match.properties.counts.hgvs += Number(element.all_hgvs);
-      match.properties.counts.allMotorVehicles += Number(element.all_motor_vehicles);
+      match.properties.pushbikes += Number(element.pedal_cycles);
+      match.properties.motorbikes += Number(element.two_wheeled_motor_vehicles);
+      match.properties.cars += Number(element.cars_and_taxis);
+      match.properties.buses += Number(element.buses_and_coaches);
+      match.properties.lgvs += Number(element.lgvs);
+      match.properties.hgvs += Number(element.all_hgvs);
+      match.properties.allMotorVehicles += Number(element.all_motor_vehicles);
     }
   });
 

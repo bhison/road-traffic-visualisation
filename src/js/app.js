@@ -1,4 +1,6 @@
-//Reference: https://docs.mapbox.com/help/tutorials/mapbox-gl-js-expressions/
+//References: 
+// https://docs.mapbox.com/help/tutorials/mapbox-gl-js-expressions/
+// https://docs.mapbox.com/mapbox-gl-js/example/popup-on-hover/
 
 import "../css/main.css";
 import * as sampleData from '../data/data.json';
@@ -54,6 +56,39 @@ map.on('load', function () {
       }
     });
   });
+});
+
+var popup = new mapboxgl.Popup({
+  closeButton: false,
+  closeOnClick: false
+});
+
+// Change the cursor to a pointer when the mouse is over the places layer.
+map.on('mouseenter', 'points', function (e) {
+  map.getCanvas().style.cursor = 'pointer';
+
+  let coordinates = e.features[0].geometry.coordinates.slice();
+  let properties = e.features[0].properties;
+  let description = 
+    "<p><b>Count:</b> "+ properties.allMotorVehicles +
+    "<br><em>" + properties.roadName + " from " +
+     properties.startJunction + " to " + properties.endJunction + "</em>";
+
+  // Ensure that if the map is zoomed out such that multiple
+  // copies of the feature are visible, the popup appears
+  // over the copy being pointed to.
+  while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+  }
+
+  popup.setLngLat(coordinates)
+    .setHTML(description)
+    .addTo(map);
+});
+
+map.on('mouseleave', 'points', function () {
+  map.getCanvas().style.cursor = '';
+  popup.remove();
 });
 
 //Convert data to GeoJSON

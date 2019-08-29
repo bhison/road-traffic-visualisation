@@ -32,11 +32,22 @@ map.on('load', function () {
       "type": "circle",
       "source": 'traffic-data',
       paint: {
-        // 'circle-radius': ["/", ['number', ['get', 'allMotorVehicles'], maxTraffic], maxTraffic],
         'circle-radius': [
-          '/',
-          ['number', ['get', 'allMotorVehicles'], 1],
-          8000
+          'interpolate', ['linear'], ['zoom'],
+          10, [
+            '+', 5, [
+              '/',
+              ['number', ['get', 'allMotorVehicles'], 1],
+              8000 //scaled until it looks kind of right
+            ]
+          ],
+          13, [
+            '+', 5, [
+              '/',
+              ['number', ['get', 'allMotorVehicles'], 1],
+              5000 //scaled until it looks kind of right
+            ]
+          ]
         ],
         'circle-opacity': 0.8,
         'circle-color': 'rgb(171, 72, 33)'

@@ -165,9 +165,6 @@ const lgvsCheck = document.getElementById('lgvs');
 const hgvsCheck = document.getElementById('hgvs');
 const pedalbikesCheck = document.getElementById('pedalbikes');
 
-console.log("Test checkboxes:");
-console.log("Pedalbikes value: " + pedalbikesCheck.checked);
-
 allMotorCheck.addEventListener('click', e => {
   motorbikeCheck.checked = allMotorCheck.checked;
   carsCheck.checked = allMotorCheck.checked;
@@ -175,50 +172,55 @@ allMotorCheck.addEventListener('click', e => {
   lgvsCheck.checked = allMotorCheck.checked;
   hgvsCheck.checked = allMotorCheck.checked;
   FilterDataAndRedraw();
-  console.log('biltong');
 });
+
 motorbikeCheck.addEventListener('click', e => {
-  if(!motorbikeCheck.checked) {
+  if (!motorbikeCheck.checked) {
     allMotorCheck.checked = false;
   } SwitchAllMotorsCheckIfAllSelected();
   FilterDataAndRedraw();
 });
+
 carsCheck.addEventListener('click', e => {
-  if(!carsCheck.checked) {
+  if (!carsCheck.checked) {
     allMotorCheck.checked = false;
   } SwitchAllMotorsCheckIfAllSelected();
   FilterDataAndRedraw();
 });
+
 busesCheck.addEventListener('click', e => {
-  if(!busesCheck.checked) {
+  if (!busesCheck.checked) {
     allMotorCheck.checked = false;
   } else SwitchAllMotorsCheckIfAllSelected();
   FilterDataAndRedraw();
 });
+
 lgvsCheck.addEventListener('click', e => {
-  if(!lgvsCheck.checked) {
+  if (!lgvsCheck.checked) {
     allMotorCheck.checked = false;
   } else SwitchAllMotorsCheckIfAllSelected();
   FilterDataAndRedraw();
 });
+
 hgvsCheck.addEventListener('click', e => {
-  if(!hgvsCheck.checked) {
+  if (!hgvsCheck.checked) {
     allMotorCheck.checked = false;
   } else SwitchAllMotorsCheckIfAllSelected();
   FilterDataAndRedraw();
 });
+
 pedalbikesCheck.addEventListener('click', e => {
   FilterDataAndRedraw();
 });
 
-function SwitchAllMotorsCheckIfAllSelected(){
-  if(motorbikeCheck.checked &&
+function SwitchAllMotorsCheckIfAllSelected() {
+  if (motorbikeCheck.checked &&
     carsCheck.checked &&
     busesCheck.checked &&
     lgvsCheck.checked &&
-    hgvsCheck.checked
-    )
+    hgvsCheck.checked) {
     allMotorCheck.checked = true;
+  }
 }
 
 function FilterDataAndRedraw() {

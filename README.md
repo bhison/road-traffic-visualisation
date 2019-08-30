@@ -1,6 +1,6 @@
-# UK Traffic Data Explorer 
-
+# UK Traffic Data Explorer
 _Displaying and filtering traffic count data in Mapbox GL JS_
+
 ![screenshot](screenshot.png)
 
 #### Overview

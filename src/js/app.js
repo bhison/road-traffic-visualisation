@@ -7,18 +7,23 @@ import * as sampleData from '../data/data.json';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYmhpc29uIiwiYSI6ImNqcDc5a2xlaTEwNmwza28zMDFvYWl1YnkifQ.9KB2DoGG7y7QBd93uBbWFw';
 
-var map = window.map = new mapboxgl.Map({
+let map = window.map = new mapboxgl.Map({
   container: 'map',
   zoom: 8,
   center: [-3.819440, 50.724423],
   style: 'mapbox://styles/bhison/cjzx4fu180ehk1crs3kl0eis1'
 });
 
+let unfilteredData, filteredData;
+
 map.on('load', function () {
   GenerateDataSource(processedData => {
+    unfilteredData = processedData;
+    filteredData = processedData;
+
     map.addSource('traffic-data', {
       'type': 'geojson',
-      'data': processedData
+      'data': filteredData
     });
 
     let maxTraffic = processedData.features[0].properties.allMotorVehicles;
@@ -36,19 +41,19 @@ map.on('load', function () {
       paint: {
         'circle-radius': [
           'interpolate', ['linear'], ['zoom'],
-          5, 1,
+          6, 1, //make point size 1 when zoomed out a lot
           8, [
             '+', 5, [
               '/',
               ['number', ['get', 'allMotorVehicles'], 1],
-              8000 //scaled until it looks kind of right
+              8000 //scale
             ]
           ],
-          13, [
+          15, [
             '+', 5, [
               '/',
               ['number', ['get', 'allMotorVehicles'], 1],
-              5000 //scaled until it looks kind of right
+              5000 //scale
             ]
           ]
         ],
@@ -65,14 +70,22 @@ var popup = new mapboxgl.Popup({
 });
 
 map.on('mouseenter', 'points', function (e) {
+  filteredData.features.forEach(element => {
+    if (e.features[0].properties.pointId == element.properties.pointId) {
+      console.log(element.properties.allMotorVehicles);
+      element.properties.allMotorVehicles += 10000;
+    }
+  });
+  map.getSource('traffic-data').setData(filteredData);
+
   map.getCanvas().style.cursor = 'pointer';
 
   let coordinates = e.features[0].geometry.coordinates.slice();
   let properties = e.features[0].properties;
-  let description = 
-    "<p><b>Count:</b> "+ properties.allMotorVehicles +
+  let description =
+    "<p><b>Count:</b> " + properties.allMotorVehicles +
     "<br><em>" + properties.roadName + " from " +
-     properties.startJunction + " to " + properties.endJunction + "</em>";
+    properties.startJunction + " to " + properties.endJunction + "</em>";
 
   // Ensure that if the map is zoomed out such that multiple
   // copies of the feature are visible, the popup appears

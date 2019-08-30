@@ -36,7 +36,8 @@ map.on('load', function () {
       paint: {
         'circle-radius': [
           'interpolate', ['linear'], ['zoom'],
-          10, [
+          5, 1,
+          8, [
             '+', 5, [
               '/',
               ['number', ['get', 'allMotorVehicles'], 1],
@@ -63,7 +64,6 @@ var popup = new mapboxgl.Popup({
   closeOnClick: false
 });
 
-// Change the cursor to a pointer when the mouse is over the places layer.
 map.on('mouseenter', 'points', function (e) {
   map.getCanvas().style.cursor = 'pointer';
 

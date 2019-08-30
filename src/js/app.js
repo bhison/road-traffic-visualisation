@@ -39,14 +39,14 @@ map.on('load', function () {
             '+', 5, [
               '*',
               ['number', ['get', 'filterSumPercentOfMax'], 1],
-              8 //scale
+              8 //scale multiplier
             ]
           ],
           15, [
             '+', 5, [
               '*',
               ['number', ['get', 'filterSumPercentOfMax'], 1],
-              15 //scale
+              15 //scale multiplier
             ]
           ]
         ],

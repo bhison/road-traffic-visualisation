@@ -70,13 +70,13 @@ var popup = new mapboxgl.Popup({
 });
 
 map.on('mouseenter', 'points', function (e) {
-  filteredData.features.forEach(element => {
-    if (e.features[0].properties.pointId == element.properties.pointId) {
-      console.log(element.properties.allMotorVehicles);
-      element.properties.allMotorVehicles += 10000;
-    }
-  });
-  map.getSource('traffic-data').setData(filteredData);
+  // filteredData.features.forEach(element => {
+  //   if (e.features[0].properties.pointId == element.properties.pointId) {
+  //     console.log(element.properties.allMotorVehicles);
+  //     element.properties.allMotorVehicles += 10000;
+  //   }
+  // });
+  // map.getSource('traffic-data').setData(filteredData);
 
   map.getCanvas().style.cursor = 'pointer';
 

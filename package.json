@@ -1,19 +1,20 @@
 {
-  "name": "bhison-boilerplate",
+  "name": "road-traffic-visualisation",
+  "author": "Tim Bhison",
+  "homepage": "https://rtv.bhison.now.sh/",
   "version": "1.0.0",
-  "description": "A stater for a webpack pnpm project. Change these details before use.",
-  "license": "UNLICENSED",
+  "description": "A Mapbox GL JS visualisation for road traffic data",
+  "license": "MIT",
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bhison/boilerplate"
+    "url": "https://github.com/bhison/road-traffic-visualisation"
   },
   "scripts": {
     "start": "webpack-dev-server --port 8080 --hot --host 0",
     "private-start": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Tim Bhison",
   "dependencies": {
     "mapbox-gl": "^1.3.0"
   },

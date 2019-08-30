@@ -155,13 +155,6 @@ function GenerateDataSource(callback) {
   callback(processedData);
 }
 
-// function DrawPoints() {
-//   //Only draw filtered data
-
-// }
-
-
-
 /*
 Unimplemented ideas
 --ability to break down information by direction - add extra fields to geojson feature properties

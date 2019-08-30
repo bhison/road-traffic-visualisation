@@ -26,6 +26,7 @@ map.on('load', function () {
       'data': filteredData
     });
 
+    //TODO: set circle colour based on distance from max
     let maxTraffic = processedData.features[0].properties.allMotorVehicles;
     processedData.features.forEach(e => {
       if (e.properties.allMotorVehicles > maxTraffic) {
@@ -33,6 +34,7 @@ map.on('load', function () {
       }
     });
     console.log("Max Traffic:" + maxTraffic);
+    //
 
     map.addLayer({
       "id": "points",
@@ -164,6 +166,61 @@ const pedalbikesCheck = document.getElementById('pedalbikes');
 
 console.log("Test checkboxes:");
 console.log("Pedalbikes value: " + pedalbikesCheck.checked);
+
+allMotorCheck.addEventListener('click', e => {
+  motorbikeCheck.checked = allMotorCheck.checked;
+  carsCheck.checked = allMotorCheck.checked;
+  busesCheck.checked = allMotorCheck.checked;
+  lgvsCheck.checked = allMotorCheck.checked;
+  hgvsCheck.checked = allMotorCheck.checked;
+  FilterDataAndRedraw();
+  console.log('biltong');
+});
+motorbikeCheck.addEventListener('click', e => {
+  if(!motorbikeCheck.checked) {
+    allMotorCheck.checked = false;
+  } AllMotorVehiclesCheckedTest();
+  FilterDataAndRedraw();
+});
+carsCheck.addEventListener('click', e => {
+  if(!carsCheck.checked) {
+    allMotorCheck.checked = false;
+  } AllMotorVehiclesCheckedTest();
+  FilterDataAndRedraw();
+});
+busesCheck.addEventListener('click', e => {
+  if(!busesCheck.checked) {
+    allMotorCheck.checked = false;
+  } else AllMotorVehiclesCheckedTest();
+  FilterDataAndRedraw();
+});
+lgvsCheck.addEventListener('click', e => {
+  if(!lgvsCheck.checked) {
+    allMotorCheck.checked = false;
+  } else AllMotorVehiclesCheckedTest();
+  FilterDataAndRedraw();
+});
+hgvsCheck.addEventListener('click', e => {
+  if(!hgvsCheck.checked) {
+    allMotorCheck.checked = false;
+  } else AllMotorVehiclesCheckedTest();
+  FilterDataAndRedraw();
+});
+pedalbikesCheck.addEventListener('click', e => {
+  FilterDataAndRedraw();
+});
+
+//UX function to switch on the all motors filter check if each motor type has been
+// selected individually
+function AllMotorVehiclesCheckedTest(){
+  if(motorbikeCheck.checked &&
+    carsCheck.checked &&
+    busesCheck.checked &&
+    lgvsCheck.checked &&
+    hgvsCheck.checked
+    )
+    allMotorCheck.checked = true;
+}
 
 function FilterDataAndRedraw() {
 

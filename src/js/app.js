@@ -84,8 +84,8 @@ map.on('mouseenter', 'points', function (e) {
   let properties = e.features[0].properties;
   let description =
     "<p><b>Count:</b> " + properties.allMotorVehicles +
-    "<br><em>" + properties.roadName + " from " +
-    properties.startJunction + " to " + properties.endJunction + "</em>";
+    "<br><b>Location: </b><em>" + properties.roadName + " <span class='fromto'>from</span> " +
+    properties.startJunction + " <span class='fromto'>to</span> " + properties.endJunction + "</em>";
 
   // Ensure that if the map is zoomed out such that multiple
   // copies of the feature are visible, the popup appears

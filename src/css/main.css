@@ -98,6 +98,10 @@ h3{
   margin-right: 10px;
 }
 
+.fromto{
+  color:rgb(12, 82, 212);
+}
+
 #attribution {
   text-align: center;
   font-family: 'Courier New', Courier, monospace;

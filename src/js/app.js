@@ -155,7 +155,8 @@ function GenerateDataSource(callback) {
   callback(processedData);
 }
 
-//Filter controls
+
+// +++++ DATA FILTER CONTROLS (from this point to bottom of file) +++++ //
 const allMotorCheck = document.getElementById('all-motor');
 const motorbikeCheck = document.getElementById('motorbike');
 const carsCheck = document.getElementById('cars');
@@ -179,40 +180,38 @@ allMotorCheck.addEventListener('click', e => {
 motorbikeCheck.addEventListener('click', e => {
   if(!motorbikeCheck.checked) {
     allMotorCheck.checked = false;
-  } AllMotorVehiclesCheckedTest();
+  } SwitchAllMotorsCheckIfAllSelected();
   FilterDataAndRedraw();
 });
 carsCheck.addEventListener('click', e => {
   if(!carsCheck.checked) {
     allMotorCheck.checked = false;
-  } AllMotorVehiclesCheckedTest();
+  } SwitchAllMotorsCheckIfAllSelected();
   FilterDataAndRedraw();
 });
 busesCheck.addEventListener('click', e => {
   if(!busesCheck.checked) {
     allMotorCheck.checked = false;
-  } else AllMotorVehiclesCheckedTest();
+  } else SwitchAllMotorsCheckIfAllSelected();
   FilterDataAndRedraw();
 });
 lgvsCheck.addEventListener('click', e => {
   if(!lgvsCheck.checked) {
     allMotorCheck.checked = false;
-  } else AllMotorVehiclesCheckedTest();
+  } else SwitchAllMotorsCheckIfAllSelected();
   FilterDataAndRedraw();
 });
 hgvsCheck.addEventListener('click', e => {
   if(!hgvsCheck.checked) {
     allMotorCheck.checked = false;
-  } else AllMotorVehiclesCheckedTest();
+  } else SwitchAllMotorsCheckIfAllSelected();
   FilterDataAndRedraw();
 });
 pedalbikesCheck.addEventListener('click', e => {
   FilterDataAndRedraw();
 });
 
-//UX function to switch on the all motors filter check if each motor type has been
-// selected individually
-function AllMotorVehiclesCheckedTest(){
+function SwitchAllMotorsCheckIfAllSelected(){
   if(motorbikeCheck.checked &&
     carsCheck.checked &&
     busesCheck.checked &&

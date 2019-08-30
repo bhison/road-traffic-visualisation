@@ -82,20 +82,18 @@ map.on('mouseenter', 'points', function (e) {
 
   let coordinates = e.features[0].geometry.coordinates.slice();
   let properties = e.features[0].properties;
-  let description =
+  let popupContents =
     "<p><b>Count:</b> " + properties.allMotorVehicles +
     "<br><b>Location: </b><em>" + properties.roadName + " <span class='fromto'>from</span> " +
     properties.startJunction + " <span class='fromto'>to</span> " + properties.endJunction + "</em>";
 
-  // Ensure that if the map is zoomed out such that multiple
-  // copies of the feature are visible, the popup appears
-  // over the copy being pointed to.
+  // Prevent popup trying to render twice on far zoomout
   while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
     coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
   }
 
   popup.setLngLat(coordinates)
-    .setHTML(description)
+    .setHTML(popupContents)
     .addTo(map);
 });
 
@@ -155,7 +153,24 @@ function GenerateDataSource(callback) {
   callback(processedData);
 }
 
+//Filter controls
+const allMotorCheck = document.getElementById('all-motor');
+const motorbikeCheck = document.getElementById('motorbike');
+const carsCheck = document.getElementById('cars');
+const busesCheck = document.getElementById('buses');
+const lgvsCheck = document.getElementById('lgvs');
+const hgvsCheck = document.getElementById('hgvs');
+const pedalbikesCheck = document.getElementById('pedalbikes');
+
+console.log("Test checkboxes:");
+console.log("Pedalbikes value: " + pedalbikesCheck.checked);
+
+function FilterDataAndRedraw() {
+
+}
+
 /*
 Unimplemented ideas
 --ability to break down information by direction - add extra fields to geojson feature properties
+--d3 graph to show most common type of road to travel down for each vehicle type
 */

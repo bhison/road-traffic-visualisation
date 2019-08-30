@@ -6,7 +6,7 @@
 #### Overview
 Traffic data (*downloaded from the [UK Department of Transport](https://roadtraffic.dft.gov.uk/api/average-annual-daily-flow-by-direction?filter[local_authority_id]=71) on 28th August 2019*) sits locally in JSON form, is read in and converted to GeoJSON. Upon different filtering options being selected, different totals are fed to set the circle colour and size for each point. These are normalised against the highest count under the current filtering options.
 
-_**Note:** data is stored locally rather than fetched from the API as the endpoint response doesn't have a header which creates CORS issues_
+_**Note:** data is stored locally rather than fetched from the API as the endpoint response doesn't have a header which creates CORS issues. [See the version of app.js in branch remote-data](https://github.com/bhison/road-traffic-visualisation/blob/remote-data/src/js/app.js) for my efforts on this part._
 
 #### Unimplemented ideas
 - Ability to break down information by direction

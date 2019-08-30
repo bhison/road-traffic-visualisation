@@ -7,6 +7,10 @@ a {
   text-decoration: none;
 }
 
+h3{
+  margin-bottom: 5px;
+}
+
 #map {
   position: absolute;
   top: 0;
@@ -76,6 +80,18 @@ a {
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   font-size: 2vh;
   width: 95%;
+
+  /* stop text from being highlighted when clicked */
+  -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
 }
 
 .filter-option input {
@@ -94,4 +110,8 @@ a {
   border-radius: 5px;
   margin-top: 5px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+label:hover{
+  cursor: pointer
 }

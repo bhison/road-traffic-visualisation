@@ -249,8 +249,3 @@ function FilterData(callback) {
   callback();
 }
 
-/*
-Unimplemented ideas
---ability to break down information by direction - add extra fields to geojson feature properties
---d3 graph to show most common type of road to travel down for each vehicle type
-*/

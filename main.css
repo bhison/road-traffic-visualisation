@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+h3{
+  margin-bottom: 5px;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.map-overlay {
+  font: 1.5vh 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  position: absolute;
+  width: 250px;
+  padding: 0;
+  margin-left: 10px;
+  margin-top: 10px;
+  left: 0;
+  right: 0;
+  top: 0;
+  color: rgb(44, 44, 44);
+}
+
+.map-overlay .map-overlay-inner {
+  background-color: rgba(134, 127, 121, 0.95);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  border-radius: 1px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.map-overlay h2 {
+  line-height: 24px;
+  display: block;
+  margin: 0 0 5px;
+}
+
+.map-overlay hr {
+  margin: 0 0 5px 0;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.hidden {
+  display: none;
+}
+
+.map-overlay button {
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 5px;
+  margin-bottom: 5px;
+  display: inline-block;
+  width: 98%;
+  position: relative;
+  border-style: solid;
+  border-width: 0;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  font-size: 2vh;
+}
+
+.filter-option {
+  background-color: rgba(255, 255, 255, 0.3);
+  padding: 2.5%;
+  margin-bottom: 5px;
+  display: inline-block;
+  position: relative;
+  border-width: 0;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  font-size: 2vh;
+  width: 95%;
+
+  /* stop text from being highlighted when clicked */
+  -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
+}
+
+.filter-option input {
+  margin-right: 10px;
+}
+
+.fromto{
+  color:rgb(12, 82, 212);
+}
+
+#attribution {
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+#chart {
+  width: 100%;
+  height: 150px;
+  background: white;
+  border-radius: 5px;
+  margin-top: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+label:hover{
+  cursor: pointer
+}

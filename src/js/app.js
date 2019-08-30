@@ -51,7 +51,12 @@ map.on('load', function () {
           ]
         ],
         'circle-opacity': 0.8,
-        'circle-color': 'rgb(171, 72, 33)'
+        // 'circle-color': 'rgb(171, 72, 33)'
+        'circle-color': [
+          'interpolate-hcl', ['linear'], ['get', 'filterSumPercentOfMax'],
+          0, '#FFDD44',
+          1, '#FF0000'
+        ]
       }
     });
   });

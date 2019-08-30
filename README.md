@@ -1,6 +1,4 @@
-# UK Traffic Data Explorer
-_Displaying and filtering traffic count data in Mapbox GL JS_
-
+# Road Traffic Visualisation in Mapbox GL
 [View live app here](https://rtv.bhison.now.sh/)
 
 ![screenshot](screenshot.png)

@@ -86,8 +86,9 @@ map.on('mouseenter', 'points', function (e) {
   let properties = e.features[0].properties;
   let popupContents =
     "<p><b>Count:</b> " + properties.allMotorVehicles +
-    "<br><b>Location: </b><em>" + properties.roadName + " <span class='fromto'>from</span> " +
-    properties.startJunction + " <span class='fromto'>to</span> " + properties.endJunction + "</em>";
+    "<br><b>Location: </b><em>" + properties.roadName + 
+    " <span class='fromto'>from</span> " + properties.startJunction +
+    " <span class='fromto'>to</span> " + properties.endJunction + "</em>";
 
   // Prevent popup trying to render twice on far zoomout
   while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
